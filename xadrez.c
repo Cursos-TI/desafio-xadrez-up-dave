@@ -14,7 +14,19 @@
             moverRainha(rainha + 1);
         }
     }
+    // Função recursiva para mover o bispo na diagonal
+    void moverBispo(int passo) {
+        if (passo < 5) { // O bispo se move 5 casas na diagonal
+            printf("Cima\n");
 
+            // Loop aninhado para o movimento horizontal (Direita)
+            for (int j = 0; j < 1; j++) { 
+                printf("Direita\n");
+            }
+
+            moverBispo(passo + 1); // Chamada recursiva para continuar o movimento
+        }
+}
 
 
 int main() {
@@ -30,14 +42,9 @@ int main() {
     printf("\n");
     
     //mover o bispo 5 casas na diagonal para cima e direita
-    printf("## Movendo o Bispo\n");     // <-- utilizando loops aninhados (for)
-        for (int i = 0; i < 5; i++){    // <-- Loop externo controla a quantidade de movimentos
-            for (int j = 0; j < 1; j++){    // <-- A cada movimento, o loop interno é executado
-                printf("Cima\n");  // Direção do movimento
-                printf("Direita\n"); // Direção do movimento
-            }         
-        }
-
+    printf("## Movendo o Bispo\n");
+        moverBispo(bispo); // <-- utilizando recursividade para mover o bispo
+    
     printf("\n");
 
     //mover a rainha 8 casas para direita
@@ -48,7 +55,14 @@ int main() {
     
     //mover o cavalo 2 casas para cima e 1 para a direita
     printf("## Movendo o Cavalo\n");   // <-- utilizando Loops complexos (for)
-        
+        for (int i = 0, j = 2; i < 3; i++, j--) {       // loop externo controla a quantidade de movimentos
+            if (j > 0) {
+                printf("Cima\n"); // Move duas casas para cima
+            } else {
+                printf("Direita\n"); // Move uma casa para a direita
+                break;  // Sai do loop após concluir o movimento
+            }
+    }
     
     printf("\n");
 
